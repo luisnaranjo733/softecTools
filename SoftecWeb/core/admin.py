@@ -46,9 +46,19 @@ class ComputerAdmin(admin.ModelAdmin):
         'restaurant__eAutomateID',
     )
 
+class PhoneInline(admin.TabularInline):
+    model = Phone
+    extra = 0
+
+class EmaliInline(admin.StackedInline):
+    model = Email
+    extra = 0
 
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    inlines = [PhoneInline, EmaliInline]
+    search_fields = [
+        'name',
+    ]
 
 
 class PhoneAdmin(admin.ModelAdmin):

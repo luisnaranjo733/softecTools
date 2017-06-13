@@ -6,7 +6,7 @@ class Pos(models.Model):
     'POS'
     pos_name = models.CharField(max_length=255, null=False, blank=False)
     version = models.CharField(max_length=255, null=True, blank=True)
-    notes = models.TextField()
+    notes = models.TextField(blank=True)
 
     def __str__(self):
         return self.pos_name
@@ -15,10 +15,10 @@ class Pos(models.Model):
 class Customer(models.Model):
     'Customer'
     name = models.CharField(max_length=255, null=False, blank=False)
-    notes = models.TextField()
+    notes = models.TextField(blank=True)
 
     def __str__(self):
-        return this.name
+        return self.name
 
 
 class Phone(models.Model):
@@ -36,7 +36,7 @@ class Email(models.Model):
     owner = models.ForeignKey(Customer)
 
     def __str__(self):
-        return this.email
+        return self.email
 
 
 class Restaurant(models.Model):
@@ -47,8 +47,9 @@ class Restaurant(models.Model):
     country = models.CharField(max_length=255, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
     eAutomateID = models.CharField(max_length=255, null=True, blank=True)
-    notes = models.TextField()
-    pos = models.ForeignKey(Pos)
+    notes = models.TextField(blank=True)
+    pos = models.ForeignKey(Pos, null=True, blank=True)
+    customers = models.ManyToManyField(Customer, blank=True)
 
     def __str__(self):
         return '%s (%s)' % (self.name, self.eAutomateID)
@@ -58,7 +59,7 @@ class Computer(models.Model):
     'Computer'
     name = models.CharField(max_length=255, null=False, blank=False)
     serial_number = models.CharField(max_length=255, null=True, blank=True)
-    notes = models.TextField()
+    notes = models.TextField(blank=True)
     restaurant = models.ForeignKey(Restaurant)
 
     def __str__(self):
