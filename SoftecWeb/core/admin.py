@@ -3,7 +3,10 @@ from .models import (Pos, Restaurant, Computer, Customer, Phone, Email)
 # Register your models here.
 
 class PosAdmin(admin.ModelAdmin):
-    pass
+    list_display = [
+        'pos_name',
+        'version'
+    ]
 
 
 class ComputerInline(admin.StackedInline):
@@ -15,6 +18,7 @@ class RestaurantAdmin(admin.ModelAdmin):
     list_display = [
         'name',
         'city',
+        'state',
         'eAutomateID',
         'pos'
     ]
@@ -22,6 +26,7 @@ class RestaurantAdmin(admin.ModelAdmin):
     list_filter = (
         'name',
         'city',
+        'state',
         'pos__pos_name'
     )
 
@@ -45,6 +50,12 @@ class ComputerAdmin(admin.ModelAdmin):
     list_filter = (
         'restaurant__eAutomateID',
     )
+
+    search_fields = [
+        'serial_number',
+        'restaurant__name',
+        'restaurant__eAutomateID'
+    ]
 
 class PhoneInline(admin.TabularInline):
     model = Phone
@@ -73,5 +84,5 @@ admin.site.register(Pos, PosAdmin)
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Computer, ComputerAdmin)
 admin.site.register(Customer, CustomerAdmin)
-admin.site.register(Phone, PhoneAdmin)
-admin.site.register(Email, EmailAdmin)
+# admin.site.register(Phone, PhoneAdmin)
+# admin.site.register(Email, EmailAdmin)

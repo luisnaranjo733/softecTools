@@ -2,11 +2,16 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from core.choices import states
+
 class Pos(models.Model):
     'POS'
     pos_name = models.CharField(max_length=255, null=False, blank=False)
     version = models.CharField(max_length=255, null=True, blank=True)
     notes = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural = "POS"
 
     def __str__(self):
         return self.pos_name
@@ -43,13 +48,13 @@ class Restaurant(models.Model):
     'Restaurant'
     name = models.CharField(max_length=255, null=False, blank=False)
     city = models.CharField(max_length=255, null=True, blank=True)
-    state = models.CharField(max_length=255, null=True, blank=True)
-    country = models.CharField(max_length=255, null=True, blank=True)
+    state = models.CharField(max_length=80, blank=True, choices=states, default='WA')
     address = models.CharField(max_length=255, null=True, blank=True)
     eAutomateID = models.CharField(max_length=255, null=True, blank=True)
     notes = models.TextField(blank=True)
     pos = models.ForeignKey(Pos, null=True, blank=True)
     customers = models.ManyToManyField(Customer, blank=True)
+    country = models.CharField(max_length=255, null=True, blank=True, default='USA')
 
     def __str__(self):
         return '%s (%s)' % (self.name, self.eAutomateID)
