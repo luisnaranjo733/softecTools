@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.admin import AdminSite
+
 from .models import (Pos, Restaurant, Computer, Customer, Phone, Email)
 # Register your models here.
 
@@ -72,17 +74,14 @@ class CustomerAdmin(admin.ModelAdmin):
     ]
 
 
-class PhoneAdmin(admin.ModelAdmin):
-    pass
+class MyAdminSite(AdminSite):
+    site_header = 'Softec administration'
+    site_title = 'Softec Web'
+    site_url = None
 
+admin_site = MyAdminSite(name='softecadmin')
 
-class EmailAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(Pos, PosAdmin)
-admin.site.register(Restaurant, RestaurantAdmin)
-admin.site.register(Computer, ComputerAdmin)
-admin.site.register(Customer, CustomerAdmin)
-# admin.site.register(Phone, PhoneAdmin)
-# admin.site.register(Email, EmailAdmin)
+admin_site.register(Pos, PosAdmin)
+admin_site.register(Restaurant, RestaurantAdmin)
+admin_site.register(Computer, ComputerAdmin)
+admin_site.register(Customer, CustomerAdmin)
