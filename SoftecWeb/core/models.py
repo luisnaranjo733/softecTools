@@ -50,9 +50,9 @@ class Restaurant(models.Model):
     city = models.CharField(max_length=255, null=True, blank=True)
     state = models.CharField(max_length=80, blank=True, choices=states, default='WA')
     address = models.CharField(max_length=255, null=True, blank=True)
-    eAutomateID = models.CharField(max_length=255, null=True, blank=True)
+    eAutomateID = models.CharField(max_length=255, null=True, blank=False)
     notes = models.TextField(blank=True)
-    pos = models.ForeignKey(Pos, null=True, blank=True)
+    pos = models.ForeignKey(Pos, null=True, blank=False)
     customers = models.ManyToManyField(Customer, blank=True)
     country = models.CharField(max_length=255, null=True, blank=True, default='USA')
 

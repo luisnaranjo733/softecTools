@@ -28,8 +28,8 @@ class RestaurantAdmin(admin.ModelAdmin):
     list_filter = (
         'name',
         'city',
+        'pos__pos_name',
         'state',
-        'pos__pos_name'
     )
 
     search_fields = [
