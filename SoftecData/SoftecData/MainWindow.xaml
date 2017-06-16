@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoftecData"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="700">
     <StackPanel>
         <Label x:Name="Header" Content="Softec Data" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="500"/>
 
         <ListView Margin="10" Name="lvUsers">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}" />
-                    <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                    <GridViewColumn Header="Key" Width="100" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Value" Width="200" DisplayMemberBinding="{Binding Age}" />
+                    <GridViewColumn Header="Protected?" Width="100" DisplayMemberBinding="{Binding Mail}" />
                 </GridView>
             </ListView.View>
         </ListView>
+        
+        <Button x:Name="fetchProtectedData" Content="Fetch potected data" Click="fetchProtectedData_Click" />
+        
     </StackPanel>
 </Window>

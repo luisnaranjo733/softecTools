@@ -35,6 +35,11 @@ namespace SoftecData
         {
 
         }
+
+        private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
+        {
+            var x = 1;
+        }
     }
 
     public class User
