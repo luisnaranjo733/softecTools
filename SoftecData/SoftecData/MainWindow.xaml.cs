@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftecData.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,25 +21,22 @@ namespace SoftecData
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DataRepository _repository;
+
         public MainWindow()
         {
             InitializeComponent();
-            List<User> items = new List<User>();
-            items.Add(new User() { Name = "John Doe", Age = 42, Mail = "john@doe-family.com" });
-            items.Add(new User() { Name = "Jane Doe", Age = 39, Mail = "jane@doe-family.com" });
-            items.Add(new User() { Name = "Sammy Doe", Age = 7, Mail = "sammy.doe@gmail.com" });
-            lvUsers.ItemsSource = items;
 
-        }
+            _repository = new DataRepository();
+            _repository.FetchData();
 
-        private void Window_SourceInitialized(object sender, EventArgs e)
-        {
+            lvUsers.ItemsSource = _repository.Data;
 
         }
 
         private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
         {
-            var x = 1;
+            lvUsers.ItemsSource = _repository.Data.Take(2);
         }
     }
 

@@ -12,9 +12,9 @@
         <ListView Margin="10" Name="lvUsers">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Key" Width="100" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Value" Width="200" DisplayMemberBinding="{Binding Age}" />
-                    <GridViewColumn Header="Protected?" Width="100" DisplayMemberBinding="{Binding Mail}" />
+                    <GridViewColumn Header="Key" Width="200" DisplayMemberBinding="{Binding Key}" />
+                    <GridViewColumn Header="Value" Width="200" DisplayMemberBinding="{Binding Value}" />
+                    <GridViewColumn Header="Protected?" Width="100" DisplayMemberBinding="{Binding Protected}" />
                 </GridView>
             </ListView.View>
         </ListView>
