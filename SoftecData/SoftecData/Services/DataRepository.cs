@@ -9,8 +9,12 @@ namespace SoftecData.Services
 {
     public class DataRepository
     {
+        //private List<DataItem> _data { get; set; }
         public List<DataItem> Data { get; set; }
 
+        /// <summary>
+        /// Fetch data from local storage and store it in memory
+        /// </summary>
         public void FetchData()
         {
             Data = new List<DataItem>();
@@ -34,6 +38,16 @@ namespace SoftecData.Services
                 Value = "yes",
                 Protected = true
             });
+        }
+
+        /// <summary>
+        /// * Set local storage from memory
+        /// * Set cloud storage from memory (if possible)
+        /// </summary>
+        /// <param name="data"></param>
+        public void UpdateData(List<DataItem> data)
+        {
+
         }
     }
 }
