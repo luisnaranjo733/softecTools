@@ -18,8 +18,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        <Button x:Name="fetchProtectedData" Content="Fetch potected data" Click="fetchProtectedData_Click" />
-        
+
+        <Button x:Name="fetchProtectedData" Content="Fetch potected data" Click="fetchProtectedData_Click" Margin="10,20,10,0" />
+        <Button x:Name="fetchProtectedData_Copy" Content="Add data item" Click="addDataItem_Click" Margin="10,20,10,0" />
+
     </StackPanel>
 </Window>

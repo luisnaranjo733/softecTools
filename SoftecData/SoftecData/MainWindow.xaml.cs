@@ -37,6 +37,14 @@ namespace SoftecData
         private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
         {
             lvUsers.ItemsSource = _repository.Data.Take(2);
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+
+            MessageBox.Show(path, path);
+        }
+
+        private void addDataItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
