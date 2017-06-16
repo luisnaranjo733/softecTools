@@ -12,10 +12,14 @@
         <Label Content="Add a new data item" Margin="0,0,0,30" />
 
         <Label Content="Key" />
-        <TextBox Margin="10,20,10,0" MinHeight="20" />
+        <TextBox x:Name="keyBox" Margin="10,20,10,0" MinHeight="20" />
 
         <Label Content="Value" />
-        <TextBox Margin="10,20,10,0" MinHeight="20" />
+        <TextBox x:Name="valueBox" Margin="10,20,10,0" MinHeight="20" />
+
+        <Label Content="Password protected?" />
+        <CheckBox x:Name="protectedBox" Margin="10,20,10,0" MinHeight="20"/>
+        
         <Button x:Name="addNewItemBtn" Margin="0,40,0,0" MinHeight="30" Content="Add" Click="addNewItemBtn_Click" />
     </StackPanel>
 </Page>

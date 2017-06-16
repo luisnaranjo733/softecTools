@@ -27,6 +27,10 @@ namespace SoftecData.Pages
 
         private void addNewItemBtn_Click(object sender, RoutedEventArgs e)
         {
+            string key = keyBox.Text;
+            string value = valueBox.Text;
+            bool passwordProtected = protectedBox.IsChecked ?? false;
+
             NavigationService.Navigate(new HomePage());
         }
     }
