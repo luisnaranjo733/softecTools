@@ -6,21 +6,7 @@
         xmlns:local="clr-namespace:SoftecData"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="700">
-    <StackPanel>
-        <Label x:Name="Header" Content="Softec Data" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="500"/>
-
-        <ListView Margin="10" Name="lvUsers">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Key" Width="200" DisplayMemberBinding="{Binding Key}" />
-                    <GridViewColumn Header="Value" Width="200" DisplayMemberBinding="{Binding Value}" />
-                    <GridViewColumn Header="Protected?" Width="100" DisplayMemberBinding="{Binding Protected}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-
-        <Button x:Name="fetchProtectedData" Content="Fetch potected data" Click="fetchProtectedData_Click" Margin="10,20,10,0" />
-        <Button x:Name="fetchProtectedData_Copy" Content="Add data item" Click="addDataItem_Click" Margin="10,20,10,0" />
-
-    </StackPanel>
+    <DockPanel>
+        <Frame x:Name="_mainFrame"/>
+    </DockPanel>
 </Window>

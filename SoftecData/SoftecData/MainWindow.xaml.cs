@@ -1,4 +1,5 @@
-﻿using SoftecData.Services;
+﻿using SoftecData.Pages;
+using SoftecData.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,31 +22,13 @@ namespace SoftecData
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DataRepository _repository;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            _repository = new DataRepository();
-            _repository.FetchData();
-
-            lvUsers.ItemsSource = _repository.Data;
-
+            _mainFrame.Navigate(new HomePage());
         }
 
-        private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
-        {
-            lvUsers.ItemsSource = _repository.Data.Take(2);
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
-
-            MessageBox.Show(path, path);
-        }
-
-        private void addDataItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 
     public class User
