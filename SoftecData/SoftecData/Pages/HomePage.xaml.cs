@@ -42,6 +42,7 @@ namespace SoftecData.Pages
 
         private void addDataItem_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new AddDataPage());
 
         }
     }

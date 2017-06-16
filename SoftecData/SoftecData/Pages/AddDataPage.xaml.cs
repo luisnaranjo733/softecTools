@@ -1,6 +1,4 @@
-﻿using SoftecData.Pages;
-using SoftecData.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,29 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SoftecData
+namespace SoftecData.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddDataPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddDataPage : Page
     {
-
-        public MainWindow()
+        public AddDataPage()
         {
             InitializeComponent();
-            //_mainFrame.Navigate(new HomePage());
-            _mainFrame.Navigate(new AddDataPage());
         }
 
-    }
-
-    public class User
-    {
-        public string Name { get; set; }
-
-        public int Age { get; set; }
-
-        public string Mail { get; set; }
+        private void addNewItemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new HomePage());
+        }
     }
 }
