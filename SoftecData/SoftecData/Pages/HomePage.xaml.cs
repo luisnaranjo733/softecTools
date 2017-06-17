@@ -1,4 +1,5 @@
-﻿using SoftecData.Services;
+﻿using SoftecData.Models;
+using SoftecData.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,11 +33,19 @@ namespace SoftecData.Pages
 
         private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
-            lvUsers.ItemsSource = mainWindow._repository.Data.Take(2);
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+            //LoginDialog loginDialog = new LoginDialog();
+            //loginDialog.Show();
+            DataItem newItem = new DataItem
+            {
+                Key = "a",
+                Value = "b",
+                Protected = true
+            };
 
-            MessageBox.Show(path, path);
+            MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
+            mainWindow._repository.AddItem(newItem);
+
+            NavigationService.Navigate(new HomePage());
         }
 
         private void addDataItem_Click(object sender, RoutedEventArgs e)

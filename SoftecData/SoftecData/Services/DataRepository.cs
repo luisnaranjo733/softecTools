@@ -36,7 +36,7 @@ namespace SoftecData.Services
             {
                 Key = "Teamviewer installed?",
                 Value = "yes",
-                Protected = true
+                Protected = false
             });
         }
 
