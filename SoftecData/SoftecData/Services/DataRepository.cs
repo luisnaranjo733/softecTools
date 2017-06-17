@@ -13,7 +13,7 @@ namespace SoftecData.Services
         public List<DataItem> Data { get; set; }
 
         /// <summary>
-        /// Fetch data from local storage and store it in memory
+        /// Load data from local storage into memory
         /// </summary>
         public void FetchData()
         {
@@ -41,15 +41,11 @@ namespace SoftecData.Services
         }
 
         /// <summary>
-        /// * Set local storage from memory
-        /// * Set cloud storage from memory (if possible)
+        /// * Add item to memory
+        /// * Save memory to local storage
+        /// * Save memory to cloud storage (if possible)
         /// </summary>
         /// <param name="data"></param>
-        public void UpdateData(List<DataItem> data)
-        {
-
-        }
-
         public void AddItem(DataItem item)
         {
             Data.Add(item);
