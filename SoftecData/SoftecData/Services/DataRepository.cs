@@ -49,5 +49,10 @@ namespace SoftecData.Services
         {
 
         }
+
+        public void AddItem(DataItem item)
+        {
+            Data.Add(item);
+        }
     }
 }

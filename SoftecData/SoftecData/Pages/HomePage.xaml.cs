@@ -21,20 +21,19 @@ namespace SoftecData.Pages
     /// </summary>
     public partial class HomePage : Page
     {
-        private DataRepository _repository;
+
         public HomePage()
         {
             InitializeComponent();
 
-            _repository = new DataRepository();
-            _repository.FetchData();
-
-            lvUsers.ItemsSource = _repository.Data;
+            MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
+            lvUsers.ItemsSource = mainWindow._repository.Data;
         }
 
         private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
         {
-            lvUsers.ItemsSource = _repository.Data.Take(2);
+            MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
+            lvUsers.ItemsSource = mainWindow._repository.Data.Take(2);
             string path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
 
             MessageBox.Show(path, path);
@@ -43,6 +42,7 @@ namespace SoftecData.Pages
         private void addDataItem_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddDataPage());
+
 
         }
     }

@@ -22,12 +22,16 @@ namespace SoftecData
     /// </summary>
     public partial class MainWindow : Window
     {
+        public DataRepository _repository;
 
         public MainWindow()
         {
             InitializeComponent();
-            //_mainFrame.Navigate(new HomePage());
-            _mainFrame.Navigate(new AddDataPage());
+            _repository = new DataRepository();
+            _repository.FetchData();
+
+            _mainFrame.Navigate(new HomePage());
+            //_mainFrame.Navigate(new AddDataPage());
         }
 
     }

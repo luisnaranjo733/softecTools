@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftecData.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,9 +28,15 @@ namespace SoftecData.Pages
 
         private void addNewItemBtn_Click(object sender, RoutedEventArgs e)
         {
-            string key = keyBox.Text;
-            string value = valueBox.Text;
-            bool passwordProtected = protectedBox.IsChecked ?? false;
+            DataItem newItem = new DataItem
+            {
+                Key = keyBox.Text,
+                Value = valueBox.Text,
+                Protected = protectedBox.IsChecked ?? false
+            };
+
+            MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
+            mainWindow._repository.AddItem(newItem);
 
             NavigationService.Navigate(new HomePage());
         }
