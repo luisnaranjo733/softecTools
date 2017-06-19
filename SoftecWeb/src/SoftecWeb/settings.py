@@ -130,20 +130,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static'
 
-if IS_PROD_ENV:
-    print('prod')
-    MEDIA_URL = '/media_files/'
-    MEDIA_ROOT = '/media_files'
-else:
-    print('not prod')
-    MEDIA_URL = ''
-    MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
-    MEDIA_URL = '/media_files/'
-    MEDIA_ROOT = '/media_files'
-
-if not os.path.isdir(MEDIA_ROOT):
-    os.makedirs(MEDIA_ROOT)
-    print('created media root')
-print(MEDIA_ROOT)
+MEDIA_URL = '/media_files/'
+MEDIA_ROOT = '/media_files'
 
 PROTECT_DATA_ITEM_DEFAULT = True
