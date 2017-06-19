@@ -76,6 +76,9 @@ class GlobalPasword(models.Model):
     'Global password'
     hashed_password = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.hashed_password
+
 class Computer(models.Model):
     'Computer'
     name = models.CharField(max_length=255, null=False, blank=False)
@@ -86,6 +89,23 @@ class Computer(models.Model):
     def __str__(self):
         return '%s | %s' % (self.restaurant.name, self.serial_number)
 
+
+
+
+def hash_password(sender, **kwargs):
+    'Automatically hash a plain text password on save'
+    already_hashed = False # Prevent hashing a hash
+    if not already_hashed: # then hash and save
+        post_save.disconnect(hash_password, sender=sender) # Temporarily disconnect signal
+
+        # Update entity
+        instance = kwargs['instance']
+        instance.hashed_password = instance.hashed_password.upper()
+        instance.save()
+
+        # Reconnect signal
+        post_save.connect(hash_password, sender=sender)
+post_save.connect(hash_password, sender=GlobalPasword) # Initially connect signal
 
 
 # @receiver(post_save, sender=Restaurant)

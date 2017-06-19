@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 
-from .models import (Pos, Restaurant, Computer, Customer, Phone, Email, RestaurantFile)
+from .models import (Pos, Restaurant, Computer, Customer, Phone, Email, RestaurantFile, GlobalPasword)
 # Register your models here.
 
 class PosAdmin(admin.ModelAdmin):
@@ -88,3 +88,4 @@ admin_site.register(Pos, PosAdmin)
 admin_site.register(Restaurant, RestaurantAdmin)
 admin_site.register(Computer, ComputerAdmin)
 admin_site.register(Customer, CustomerAdmin)
+admin_site.register(GlobalPasword)

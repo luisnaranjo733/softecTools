@@ -20,6 +20,5 @@ from core.admin import admin_site
 
 urlpatterns = [
     url(r'^', admin_site.urls),
-    # url(r'^', include('core.urls')),
-    # url(r'^admin/', admin.site.urls),
+    url(r'^api/', include('core.urls')),
 ]
