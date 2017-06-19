@@ -43,7 +43,7 @@ def provide_data_items(request):
                 data_items = DataItem.objects.filter(restaurant=restaurant)
                 response_map['authorized'] = True
             else:
-                data_items = DataItem.objects.filter(restaurant=restaurant, protected=True)
+                data_items = DataItem.objects.filter(restaurant=restaurant, protected=False)
 
             for data_item in data_items:
                 obj = {
