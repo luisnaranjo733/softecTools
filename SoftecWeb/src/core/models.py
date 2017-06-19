@@ -50,7 +50,7 @@ class Email(models.Model):
 
 class Restaurant(models.Model):
     'Restaurant'
-    name = models.CharField(max_length=255, null=False, blank=False)
+    name = models.CharField("restaurant name", max_length=255, null=False, blank=False)
     city = models.CharField(max_length=255, null=True, blank=True)
     state = models.CharField(max_length=80, blank=True, choices=states, default='WA')
     address = models.CharField(max_length=255, null=True, blank=True)
@@ -75,6 +75,9 @@ class DataItem(models.Model):
     value = models.TextField()
     protected = models.BooleanField(default=settings.PROTECT_DATA_ITEM_DEFAULT)
     restaurant = models.ForeignKey(Restaurant)
+
+    def __str__(self):
+        return self.key
 
 
 class GlobalPasword(models.Model):

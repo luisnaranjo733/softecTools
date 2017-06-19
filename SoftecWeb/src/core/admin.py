@@ -19,6 +19,18 @@ class RestaurantFileInline(admin.TabularInline):
     model = RestaurantFile
     extra = 0
 
+class DataItemAdmin(admin.ModelAdmin):
+    list_display = [
+        'key', 'value', 'restaurant'
+    ]
+    list_filter = (
+        'restaurant__name',
+        'restaurant__eAutomateID',
+    )
+    search_fields = [
+        'key', 'value', 'restaurant__name'
+    ]
+
 
 class DataItemInline(admin.TabularInline):
     model = DataItem
@@ -102,3 +114,4 @@ admin_site.register(Restaurant, RestaurantAdmin)
 admin_site.register(Computer, ComputerAdmin)
 admin_site.register(Customer, CustomerAdmin)
 admin_site.register(GlobalPasword, GlobalPasswordAdmin)
+admin_site.register(DataItem, DataItemAdmin)
