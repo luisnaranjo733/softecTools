@@ -138,6 +138,8 @@ else:
     print('not prod')
     MEDIA_URL = ''
     MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
+    MEDIA_URL = '/media_files/'
+    MEDIA_ROOT = '/media_files'
 
 if not os.path.isdir(MEDIA_ROOT):
     os.makedirs(MEDIA_ROOT)

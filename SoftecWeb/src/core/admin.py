@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 
-from .models import (Pos, Restaurant, Computer, Customer, Phone, Email, RestaurantImage)
+from .models import (Pos, Restaurant, Computer, Customer, Phone, Email, RestaurantFile)
 # Register your models here.
 
 class PosAdmin(admin.ModelAdmin):
@@ -15,8 +15,8 @@ class ComputerInline(admin.StackedInline):
     model = Computer
     extra = 0
 
-class RestaurantImageInline(admin.StackedInline):
-    model = RestaurantImage
+class RestaurantFileInline(admin.TabularInline):
+    model = RestaurantFile
     extra = 0
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -41,7 +41,7 @@ class RestaurantAdmin(admin.ModelAdmin):
         'eAutomateID'
     ]
 
-    inlines = [ComputerInline, RestaurantImageInline]
+    inlines = [ComputerInline, RestaurantFileInline]
 
 
 class ComputerAdmin(admin.ModelAdmin):

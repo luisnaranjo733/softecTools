@@ -60,9 +60,9 @@ class Restaurant(models.Model):
         return '%s (%s)' % (self.name, self.eAutomateID)
 
 
-class RestaurantImage(models.Model):
-    'Restaurant image'
-    image = models.FileField()
+class RestaurantFile(models.Model):
+    'Restaurant file'
+    resturant_file = models.FileField("File")
     restaurant = models.ForeignKey(Restaurant)
 
 class DataItem(models.Model):
