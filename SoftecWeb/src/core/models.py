@@ -60,6 +60,11 @@ class Restaurant(models.Model):
         return '%s (%s)' % (self.name, self.eAutomateID)
 
 
+class RestaurantImage(models.Model):
+    'Restaurant image'
+    image = models.FileField()
+    restaurant = models.ForeignKey(Restaurant)
+
 class DataItem(models.Model):
     'Distributed data storage item'
     key = models.CharField(max_length=255)

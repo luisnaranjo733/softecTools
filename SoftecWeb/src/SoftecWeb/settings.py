@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import platform
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.join(BASE_DIR, 'SoftecWeb')
+
+IS_PROD_ENV = platform.system() == 'Linux'
 
 
 # Quick-start development settings - unsuitable for production
@@ -125,5 +129,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static'
+
+if IS_PROD_ENV:
+    print('prod')
+    MEDIA_URL = ''
+    MEDIA_ROOT = ''
+else:
+    print('not prod')
+    MEDIA_URL = ''
+    MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
+
+if not os.path.isdir(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
+    print('created media root')
+print(MEDIA_ROOT)
 
 PROTECT_DATA_ITEM_DEFAULT = True

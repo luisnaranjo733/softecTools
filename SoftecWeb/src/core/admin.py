@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 
-from .models import (Pos, Restaurant, Computer, Customer, Phone, Email)
+from .models import (Pos, Restaurant, Computer, Customer, Phone, Email, RestaurantImage)
 # Register your models here.
 
 class PosAdmin(admin.ModelAdmin):
@@ -15,6 +15,9 @@ class ComputerInline(admin.StackedInline):
     model = Computer
     extra = 0
 
+class RestaurantImageInline(admin.StackedInline):
+    model = RestaurantImage
+    extra = 0
 
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = [
@@ -38,7 +41,7 @@ class RestaurantAdmin(admin.ModelAdmin):
         'eAutomateID'
     ]
 
-    inlines = [ComputerInline, ]
+    inlines = [ComputerInline, RestaurantImageInline]
 
 
 class ComputerAdmin(admin.ModelAdmin):
