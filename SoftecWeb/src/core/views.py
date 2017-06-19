@@ -26,7 +26,10 @@ def check_password(password):
 @csrf_exempt
 def provide_data_items(request):
     'Provide data items'
-    response_map = []
+    response_map = {
+        'authorized': False,
+        'data': []
+    }
 
     if request.method == 'POST':
         restaurant_id = request.POST.get('restaurant-id', None)
@@ -38,6 +41,7 @@ def provide_data_items(request):
 
             if check_password(password):
                 data_items = DataItem.objects.filter(restaurant=restaurant)
+                response_map['authorized'] = True
             else:
                 data_items = DataItem.objects.filter(restaurant=restaurant, protected=True)
 
@@ -47,7 +51,7 @@ def provide_data_items(request):
                     'value': data_item.value,
                     'protected': data_item.protected
                 }
-                response_map.append(obj)
+                response_map['data'].append(obj)
 
             return JsonResponse(response_map, safe=False)
 
