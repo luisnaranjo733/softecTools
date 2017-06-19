@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from SoftecWeb import settings
 from core.choices import states
 
 class Pos(models.Model):
@@ -59,6 +59,17 @@ class Restaurant(models.Model):
     def __str__(self):
         return '%s (%s)' % (self.name, self.eAutomateID)
 
+
+class DataItem(models.Model):
+    'Distributed data storage item'
+    key = models.CharField(max_length=255)
+    value = models.TextField()
+    protected = models.BooleanField(default=settings.PROTECT_DATA_ITEM_DEFAULT)
+
+
+class GlobalPasword(models.Model):
+    'Global password'
+    hashed_password = models.CharField(max_length=255)
 
 class Computer(models.Model):
     'Computer'

@@ -125,3 +125,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static'
+
+PROTECT_DATA_ITEM_DEFAULT = True
