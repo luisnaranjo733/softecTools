@@ -132,8 +132,8 @@ STATIC_ROOT = '/static'
 
 if IS_PROD_ENV:
     print('prod')
-    MEDIA_URL = ''
-    MEDIA_ROOT = ''
+    MEDIA_URL = '/media_files/'
+    MEDIA_ROOT = '/media_files'
 else:
     print('not prod')
     MEDIA_URL = ''
