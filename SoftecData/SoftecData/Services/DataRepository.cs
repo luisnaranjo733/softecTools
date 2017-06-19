@@ -1,7 +1,9 @@
-﻿using SoftecData.Models;
+﻿using Newtonsoft.Json;
+using SoftecData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,33 +13,33 @@ namespace SoftecData.Services
     {
         //private List<DataItem> _data { get; set; }
         public List<DataItem> Data { get; set; }
+        private static readonly HttpClient client = new HttpClient();
 
         /// <summary>
         /// Load data from local storage into memory
         /// </summary>
-        public void FetchData()
+        public async void FetchData()
         {
             Data = new List<DataItem>();
-            Data.Add(new DataItem
-            {
-                Key = "softouch username",
-                Value = "admin",
-                Protected = false
-            });
 
-            Data.Add(new DataItem
+            Dictionary<string, string> values = new Dictionary<string, string>
             {
-                Key = "softouch password",
-                Value = "1234",
-                Protected = false
-            });
+                { "restaurant-id", "1" },
+                { "password", "softec" }
+            };
 
-            Data.Add(new DataItem
+            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+
+            HttpResponseMessage response = client.PostAsync("http://ec2-54-202-79-153.us-west-2.compute.amazonaws.com/api/data/", content).Result;
+            string responseString = await response.Content.ReadAsStringAsync();
+
+            ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseString);
+
+            foreach(DataItem dataItem in apiResponse.data)
             {
-                Key = "Teamviewer installed?",
-                Value = "yes",
-                Protected = false
-            });
+                AddItem(dataItem);
+            }
+
         }
 
         /// <summary>

@@ -92,6 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\DataItem.cs" />
     <Compile Include="Pages\AddDataPage.xaml.cs">
