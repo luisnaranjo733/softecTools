@@ -76,6 +76,12 @@ class CustomerAdmin(admin.ModelAdmin):
         'name',
     ]
 
+class GlobalPasswordAdmin(admin.ModelAdmin):
+    list_display = [
+        'hashed_password',
+        'creation_date',
+        'note'
+    ]
 
 class MyAdminSite(AdminSite):
     site_header = 'Softec administration'
@@ -88,4 +94,4 @@ admin_site.register(Pos, PosAdmin)
 admin_site.register(Restaurant, RestaurantAdmin)
 admin_site.register(Computer, ComputerAdmin)
 admin_site.register(Customer, CustomerAdmin)
-admin_site.register(GlobalPasword)
+admin_site.register(GlobalPasword, GlobalPasswordAdmin)

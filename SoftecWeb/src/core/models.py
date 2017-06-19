@@ -4,6 +4,10 @@ from django.dispatch import receiver
 from SoftecWeb import settings
 from core.choices import states
 
+from werkzeug.security import generate_password_hash, \
+     check_password_hash
+
+
 class Pos(models.Model):
     'POS'
     pos_name = models.CharField(max_length=255, null=False, blank=False)
@@ -75,6 +79,8 @@ class DataItem(models.Model):
 class GlobalPasword(models.Model):
     'Global password'
     hashed_password = models.CharField(max_length=255)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    note = models.TextField(blank=True)
 
     def __str__(self):
         return self.hashed_password
@@ -94,13 +100,13 @@ class Computer(models.Model):
 
 def hash_password(sender, **kwargs):
     'Automatically hash a plain text password on save'
-    already_hashed = False # Prevent hashing a hash
+    instance = kwargs['instance']
+    already_hashed = len(instance.hashed_password) == 93 # Prevent hashing a hash
     if not already_hashed: # then hash and save
         post_save.disconnect(hash_password, sender=sender) # Temporarily disconnect signal
 
         # Update entity
-        instance = kwargs['instance']
-        instance.hashed_password = instance.hashed_password.upper()
+        instance.hashed_password = generate_password_hash(instance.hashed_password)
         instance.save()
 
         # Reconnect signal
