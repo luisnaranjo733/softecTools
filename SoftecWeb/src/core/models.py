@@ -54,7 +54,7 @@ class Restaurant(models.Model):
     city = models.CharField(max_length=255, null=True, blank=True)
     state = models.CharField(max_length=80, blank=True, choices=states, default='WA')
     address = models.CharField(max_length=255, null=True, blank=True)
-    eAutomateID = models.CharField(max_length=255, null=True, blank=False)
+    eAutomateID = models.CharField(max_length=255, null=True, blank=False, unique=True)
     notes = models.TextField(blank=True)
     pos = models.ForeignKey(Pos, null=True, blank=False)
     customers = models.ManyToManyField(Customer, blank=True)
@@ -74,6 +74,7 @@ class DataItem(models.Model):
     key = models.CharField(max_length=255)
     value = models.TextField()
     protected = models.BooleanField(default=settings.PROTECT_DATA_ITEM_DEFAULT)
+    restaurant = models.ForeignKey(Restaurant)
 
 
 class GlobalPasword(models.Model):

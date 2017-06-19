@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 
-from .models import (Pos, Restaurant, Computer, Customer, Phone, Email, RestaurantFile, GlobalPasword)
+from .models import (Pos, Restaurant, Computer, Customer, Phone, Email, RestaurantFile, GlobalPasword, DataItem)
 # Register your models here.
 
 class PosAdmin(admin.ModelAdmin):
@@ -18,6 +18,13 @@ class ComputerInline(admin.StackedInline):
 class RestaurantFileInline(admin.TabularInline):
     model = RestaurantFile
     extra = 0
+
+
+class DataItemInline(admin.TabularInline):
+    model = DataItem
+    # readonly_fields = ['key', 'value', 'protected']
+    extra = 0
+
 
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = [
@@ -41,7 +48,7 @@ class RestaurantAdmin(admin.ModelAdmin):
         'eAutomateID'
     ]
 
-    inlines = [ComputerInline, RestaurantFileInline]
+    inlines = [ComputerInline, RestaurantFileInline, DataItemInline]
 
 
 class ComputerAdmin(admin.ModelAdmin):
