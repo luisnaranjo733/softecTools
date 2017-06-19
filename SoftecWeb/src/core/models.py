@@ -80,7 +80,7 @@ class DataItem(models.Model):
         return self.key
 
 
-class GlobalPasword(models.Model):
+class GlobalPassword(models.Model):
     'Global password'
     hashed_password = models.CharField(max_length=255)
     creation_date = models.DateTimeField(auto_now_add=True)
@@ -115,7 +115,7 @@ def hash_password(sender, **kwargs):
 
         # Reconnect signal
         post_save.connect(hash_password, sender=sender)
-post_save.connect(hash_password, sender=GlobalPasword) # Initially connect signal
+post_save.connect(hash_password, sender=GlobalPassword) # Initially connect signal
 
 
 # @receiver(post_save, sender=Restaurant)

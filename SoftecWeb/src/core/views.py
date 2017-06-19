@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, JsonResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
-from core.models import DataItem
+from core.models import DataItem, Restaurant, GlobalPassword
 
 
 from werkzeug.security import generate_password_hash, \
@@ -15,18 +15,43 @@ def index(request):
 
 from pprint import pprint
 
+def check_password(password):
+    'Return true if this unhashed password matches one of the stored hashed passwords'
+    for global_password in GlobalPassword.objects.all():
+        if check_password_hash(global_password.hashed_password, password):
+            return True
+
+    return False
+
 @csrf_exempt
 def provide_data_items(request):
     'Provide data items'
+    response_map = []
+
     if request.method == 'POST':
         restaurant_id = request.POST.get('restaurant-id', None)
+        restaurant_id = int(restaurant_id)
         password = request.POST.get('password', '')
 
-        # data_items = DataItem.objects.filter()
+        if restaurant_id:
+            restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
 
-    data_items_map = {
-        'key1': 'value1',
-        'key2': 'value2'
-    }
-    return JsonResponse(data_items_map)
+            if check_password(password):
+                data_items = DataItem.objects.filter(restaurant=restaurant)
+            else:
+                data_items = DataItem.objects.filter(restaurant=restaurant, protected=True)
+
+            for data_item in data_items:
+                obj = {
+                    'key': data_item.key,
+                    'value': data_item.value,
+                    'protected': data_item.protected
+                }
+                response_map.append(obj)
+
+            return JsonResponse(response_map, safe=False)
+
+    raise Http404
+
+
 
