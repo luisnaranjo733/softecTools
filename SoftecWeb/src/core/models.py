@@ -62,7 +62,7 @@ class Restaurant(models.Model):
 
 class RestaurantFile(models.Model):
     'Restaurant file'
-    resturant_file = models.FileField("File")
+    resturant_file = models.FileField("File", upload_to='%Y/%m/')
     restaurant = models.ForeignKey(Restaurant)
 
 class DataItem(models.Model):
