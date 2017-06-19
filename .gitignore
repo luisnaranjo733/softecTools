@@ -1,6 +1,8 @@
 SoftecWeb/src/venv
 SoftecWeb/src/SoftecWeb/media
 SoftecWeb/src/db.sqlite3
+*.sqlite3
+
 *.pem
 *.ppk
 
