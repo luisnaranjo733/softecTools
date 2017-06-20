@@ -37,7 +37,7 @@ namespace SoftecData.Services
 
             Dictionary<string, string> values = new Dictionary<string, string>
             {
-                { "restaurant-id", "1" }
+                { "eAutomateID", "AZ01" }
             };
 
             FormUrlEncodedContent content = new FormUrlEncodedContent(values);
