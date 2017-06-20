@@ -8,7 +8,7 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="SeteAutomateIDPage">
 
-    <StackPanel>
+    <StackPanel >
         <Label Content="Set eAutomate ID" Margin="0,0,0,30" />
 
         <Label Content="eAutomateID" />
@@ -16,6 +16,6 @@
 
 
 
-        <Button x:Name="seteAutomateIDBtn" Margin="0,40,0,0" MinHeight="30" Content="Add" Click="seteAutomateID_Click" />
+        <Button x:Name="seteAutomateIDBtn" Margin="0,40,0,0" MinHeight="30" Content="Add" Click="seteAutomateID_Click" IsDefault="True" />
     </StackPanel>
 </Page>

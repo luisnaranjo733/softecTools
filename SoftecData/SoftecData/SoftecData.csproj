@@ -105,6 +105,9 @@
     <Compile Include="Pages\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PasswordDialogWindow.xaml.cs">
+      <DependentUpon>PasswordDialogWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SeteAutomateIDPage.xaml.cs">
       <DependentUpon>SeteAutomateIDPage.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PasswordDialogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

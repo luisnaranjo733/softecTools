@@ -33,19 +33,23 @@ namespace SoftecData.Pages
 
         private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
         {
-            //LoginDialog loginDialog = new LoginDialog();
-            //loginDialog.Show();
-            DataItem newItem = new DataItem
+            PasswordDialogWindow inputDialog = new PasswordDialogWindow("Please enter the password");
+            if (inputDialog.ShowDialog() == true)
             {
-                Key = "a",
-                Value = "b",
-                Protected = true
-            };
+                string password = inputDialog.Answer;
+            }
 
-            MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
-            mainWindow._repository.AddItem(newItem);
+            //DataItem newItem = new DataItem
+            //{
+            //    Key = "a",
+            //    Value = "b",
+            //    Protected = true
+            //};
 
-            NavigationService.Navigate(new HomePage());
+            //MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
+            //mainWindow._repository.AddItem(newItem);
+
+            //NavigationService.Navigate(new HomePage());
         }
 
         private void addDataItem_Click(object sender, RoutedEventArgs e)
