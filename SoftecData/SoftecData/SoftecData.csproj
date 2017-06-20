@@ -93,24 +93,32 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="app.cs" />
-    <Compile Include="Models\ApiResponse.cs" />
-    <Compile Include="Models\DataContext.cs" />
-    <Compile Include="Models\DataItem.cs" />
-    <Compile Include="Pages\AddDataPage.xaml.cs">
+    <Compile Include="ApiModels\ApiResponse.cs" />
+    <Compile Include="ApiModels\DataItem.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\PasswordEntry.cs" />
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PasswordsPage.xaml.cs">
+      <DependentUpon>PasswordsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages_phase2\AddDataPage.xaml.cs">
       <DependentUpon>AddDataPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\HomePage.xaml.cs">
+    <Compile Include="Pages_phase2\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginDialog.xaml.cs">
+    <Compile Include="Pages_phase2\LoginDialog.xaml.cs">
       <DependentUpon>LoginDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PasswordDialogWindow.xaml.cs">
+    <Compile Include="Pages_phase2\PasswordDialogWindow.xaml.cs">
       <DependentUpon>PasswordDialogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SeteAutomateIDPage.xaml.cs">
+    <Compile Include="Pages_phase2\SeteAutomateIDPage.xaml.cs">
       <DependentUpon>SeteAutomateIDPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\AccountRepository.cs" />
     <Compile Include="Services\DataRepository.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -124,23 +132,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\AddDataPage.xaml">
+    <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\HomePage.xaml">
+    <Page Include="Pages\PasswordsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LoginDialog.xaml">
+    <Page Include="Pages_phase2\AddDataPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PasswordDialogWindow.xaml">
+    <Page Include="Pages_phase2\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SeteAutomateIDPage.xaml">
+    <Page Include="Pages_phase2\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages_phase2\PasswordDialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages_phase2\SeteAutomateIDPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
