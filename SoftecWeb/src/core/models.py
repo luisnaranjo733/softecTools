@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from SoftecWeb import settings
 from core.choices import states
@@ -54,7 +54,9 @@ class Restaurant(models.Model):
     city = models.CharField(max_length=255, null=True, blank=True)
     state = models.CharField(max_length=80, blank=True, choices=states, default='WA')
     address = models.CharField(max_length=255, null=True, blank=True)
-    eAutomateID = models.CharField(max_length=255, null=True, blank=False, unique=True)
+    eAutomateID = models.CharField("eAutomate ID", max_length=4, null=False,
+                                   blank=False, unique=True,
+                                   help_text="All caps - e.g. AZ01")
     notes = models.TextField(blank=True)
     pos = models.ForeignKey(Pos, null=True, blank=False)
     customers = models.ManyToManyField(Customer, blank=True)

@@ -32,12 +32,11 @@ def provide_data_items(request):
     }
 
     if request.method == 'POST':
-        restaurant_id = request.POST.get('restaurant-id', None)
-        restaurant_id = int(restaurant_id)
+        restaurant_id = request.POST.get('eAutomateID', None)
         password = request.POST.get('password', '')
 
         if restaurant_id:
-            restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+            restaurant = get_object_or_404(Restaurant, eAutomateID=restaurant_id)
 
             if check_password(password):
                 data_items = DataItem.objects.filter(restaurant=restaurant)

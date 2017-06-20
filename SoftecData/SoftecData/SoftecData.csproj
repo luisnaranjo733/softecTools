@@ -92,6 +92,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="app.cs" />
     <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\DataItem.cs" />
@@ -150,7 +151,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="SoftecData_TemporaryKey.pfx" />

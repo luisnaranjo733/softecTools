@@ -29,6 +29,10 @@ namespace SoftecData.Services
         /// </summary>
         public async void FetchData()
         {
+            //Properties.Settings.Default.eAutomateID = 1;
+            //Properties.Settings.Default.Save();
+            var id = Properties.Settings.Default.eAutomateID;
+
             Data = new List<DataItem>();
 
             Dictionary<string, string> values = new Dictionary<string, string>
