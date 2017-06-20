@@ -60,7 +60,7 @@ namespace SoftecData.Pages
 
         private void seteAutomateID_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SeteAutomateIDPage());
         }
     }
 }
