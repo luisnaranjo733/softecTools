@@ -23,6 +23,8 @@ namespace SoftecData.Pages
         public SeteAutomateIDPage()
         {
             InitializeComponent();
+            eAutomateIDBox.SelectAll();
+            eAutomateIDBox.Focus();
         }
 
         private void seteAutomateID_Click(object sender, RoutedEventArgs e)
@@ -35,5 +37,6 @@ namespace SoftecData.Pages
 
             NavigationService.Navigate(new HomePage());
         }
+
     }
 }
