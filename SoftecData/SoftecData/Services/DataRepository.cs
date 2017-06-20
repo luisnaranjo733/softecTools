@@ -29,15 +29,19 @@ namespace SoftecData.Services
         /// </summary>
         public async void FetchData()
         {
-            //Properties.Settings.Default.eAutomateID = "AZ01";
-            //Properties.Settings.Default.Save();
-            var eAutomateID = Properties.Settings.Default.eAutomateID;
+            await FetchData("");
+        }
+
+        public async Task FetchData(string password)
+        {
+            string eAutomateID = Properties.Settings.Default.eAutomateID;
 
             Data = new List<DataItem>();
 
             Dictionary<string, string> values = new Dictionary<string, string>
             {
-                { "eAutomateID", eAutomateID }
+                { "eAutomateID", eAutomateID },
+                { "password"   , password }
             };
 
             FormUrlEncodedContent content = new FormUrlEncodedContent(values);
@@ -47,11 +51,10 @@ namespace SoftecData.Services
 
             ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(responseString);
 
-            foreach(DataItem dataItem in apiResponse.data)
+            foreach (DataItem dataItem in apiResponse.data)
             {
                 AddItem(dataItem);
             }
-
         }
 
         /// <summary>
