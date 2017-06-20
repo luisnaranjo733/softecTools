@@ -29,15 +29,15 @@ namespace SoftecData.Services
         /// </summary>
         public async void FetchData()
         {
-            //Properties.Settings.Default.eAutomateID = 1;
+            //Properties.Settings.Default.eAutomateID = "AZ01";
             //Properties.Settings.Default.Save();
-            var id = Properties.Settings.Default.eAutomateID;
+            var eAutomateID = Properties.Settings.Default.eAutomateID;
 
             Data = new List<DataItem>();
 
             Dictionary<string, string> values = new Dictionary<string, string>
             {
-                { "eAutomateID", "AZ01" }
+                { "eAutomateID", eAutomateID }
             };
 
             FormUrlEncodedContent content = new FormUrlEncodedContent(values);

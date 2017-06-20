@@ -25,10 +25,10 @@ namespace SoftecData.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int eAutomateID {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string eAutomateID {
             get {
-                return ((int)(this["eAutomateID"]));
+                return ((string)(this["eAutomateID"]));
             }
             set {
                 this["eAutomateID"] = value;
