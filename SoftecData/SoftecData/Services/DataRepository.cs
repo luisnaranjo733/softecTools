@@ -17,6 +17,15 @@ namespace SoftecData.Services
 
         /// <summary>
         /// Load data from local storage into memory
+        /// 
+        /// v2
+        /// Load data from cloud into memory
+        /// Save data from memory into local storage
+        ///// 
+        /// OR
+        /// 
+        /// Load data from cloud into memory (fail)
+        /// Load data from local storage
         /// </summary>
         public async void FetchData()
         {
@@ -24,8 +33,7 @@ namespace SoftecData.Services
 
             Dictionary<string, string> values = new Dictionary<string, string>
             {
-                { "restaurant-id", "1" },
-                { "password", "softec" }
+                { "restaurant-id", "1" }
             };
 
             FormUrlEncodedContent content = new FormUrlEncodedContent(values);
@@ -46,6 +54,11 @@ namespace SoftecData.Services
         /// * Add item to memory
         /// * Save memory to local storage
         /// * Save memory to cloud storage (if possible)
+        /// 
+        /// v2
+        /// * Add item to memory
+        /// * Save new item to local storage
+        /// * Save new item to cloud
         /// </summary>
         /// <param name="data"></param>
         public void AddItem(DataItem item)
