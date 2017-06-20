@@ -38,7 +38,7 @@ namespace SoftecData.Pages
             txtAnswer.Focus();
         }
 
-        public string Answer
+        public string Password
         {
             get { return txtAnswer.Password; }
         }

@@ -31,12 +31,14 @@ namespace SoftecData.Pages
             lvUsers.ItemsSource = mainWindow._repository.Data;
         }
 
-        private void fetchProtectedData_Click(object sender, RoutedEventArgs e)
+        private async void fetchProtectedData_Click(object sender, RoutedEventArgs e)
         {
             PasswordDialogWindow inputDialog = new PasswordDialogWindow("Please enter the password");
             if (inputDialog.ShowDialog() == true)
             {
-                string password = inputDialog.Answer;
+                MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
+                await mainWindow._repository.FetchData(inputDialog.Password);
+                NavigationService.Navigate(new HomePage());
             }
 
             //DataItem newItem = new DataItem
@@ -46,10 +48,9 @@ namespace SoftecData.Pages
             //    Protected = true
             //};
 
-            //MainWindow mainWindow = ((MainWindow)Application.Current.MainWindow);
-            //mainWindow._repository.AddItem(newItem);
 
-            //NavigationService.Navigate(new HomePage());
+
+            //
         }
 
         private void addDataItem_Click(object sender, RoutedEventArgs e)
