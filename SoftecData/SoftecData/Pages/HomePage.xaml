@@ -22,7 +22,9 @@
         </ListView>
 
         <Button x:Name="fetchProtectedData" Content="Fetch potected data" Click="fetchProtectedData_Click" Margin="10,20,10,0" />
-        <Button x:Name="fetchProtectedData_Copy" Content="Add data item" Click="addDataItem_Click" Margin="10,20,10,0" />
+        <Button x:Name="addData" Content="Add data item" Click="addDataItem_Click" Margin="10,20,10,0" />
+        <Button x:Name="deleteData" Content="Delete data item" Click="deleteDataItem_Click" Margin="10,20,10,0" />
+        <Button x:Name="setEautomateID" Content="Set eAutomateID" Click="seteAutomateID_Click" Margin="10,20,10,0" />
 
     </StackPanel>
 </Page>
