@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftecData.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,13 @@ namespace SoftecData.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        private StorageService _storageService;
+        public LoginPage(StorageService storageService)
+        {
+            _storageService = storageService;
+            InitializeComponent();
+        }
+
         public LoginPage()
         {
             InitializeComponent();
@@ -27,7 +35,7 @@ namespace SoftecData.Pages
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PasswordsPage());
+            NavigationService.Navigate(new PasswordsPage(_storageService));
         }
     }
 }

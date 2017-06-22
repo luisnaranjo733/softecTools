@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SoftecData.Models;
+using SoftecData.Services;
+using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,21 @@ namespace SoftecData.Pages
     /// </summary>
     public partial class PasswordsPage : Page
     {
+        private StorageService _storageService;
+
+        public PasswordsPage(StorageService storageService)
+        {
+            _storageService = storageService;
+            InitializeComponent();
+        }
         public PasswordsPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
