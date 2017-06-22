@@ -35,23 +35,74 @@ namespace SoftecData.Services
 
         public void Initialize()
         {
-            var db = new SQLiteConnection(StorageFilePath);
-            db.CreateTable<Account>();
-            db.CreateTable<PasswordEntry>();
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                db.CreateTable<Account>();
+                db.CreateTable<PasswordEntry>();
+            }
+
+        }
+
+        public IEnumerable<Account> GetAccounts()
+        {
+            List<Account> accounts = new List<Account>();
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                var query = db.Table<Account>().OrderBy(a => a.Username);
+                foreach (Account account in query)
+                {
+                    accounts.Add(account);
+                }
+            }
+            return accounts;
+        }
+
+        public IEnumerable<PasswordEntry> GetPasswords()
+        {
+            List<PasswordEntry> passwords = new List<PasswordEntry>();
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                var query = db.Table<PasswordEntry>().OrderBy(p => p.Timestamp);
+                foreach (PasswordEntry password in query)
+                {
+                    passwords.Add(password);
+                }
+            }
+            return passwords;
         }
 
 
         public void Add(Account account)
         {
-
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                db.Insert(account);
+            }
         }
 
         public void Add(PasswordEntry passwordEntry)
         {
-
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                db.Insert(passwordEntry);
+            }
         }
 
+        public void Delete(Account account)
+        {
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                db.Delete(account);
+            }
+        }
 
-        
+        public void Delete(PasswordEntry passwordEntry)
+        {
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                db.Delete(passwordEntry);
+            }
+        }
+
     }
 }

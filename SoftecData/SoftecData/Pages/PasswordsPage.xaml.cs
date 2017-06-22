@@ -37,7 +37,8 @@ namespace SoftecData.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var accounts =_storageService.GetPasswords();
+            //_storageService.Add(new PasswordEntry { Password = "1234" , Timestamp=DateTime.Now, Initials="LN"});
         }
     }
 }
