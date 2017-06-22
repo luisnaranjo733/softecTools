@@ -45,7 +45,8 @@ namespace SoftecData.Services
 
         public void Delete(PasswordEntry password)
         {
-            throw new NotImplementedException();
+            var account = _accounts.Single(a => a.Id == password.AccountId);
+            account.Passwords.Remove(password);
         }
 
         public ObservableCollection<Account> GetAccounts()

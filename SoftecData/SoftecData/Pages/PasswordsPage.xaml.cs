@@ -52,7 +52,13 @@ namespace SoftecData.Pages
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentAccount = (Account)listViewAccounts.SelectedItem;
+            var currentPasswordEntry = (PasswordEntry)listViewPasswords.SelectedItem;
+            if (currentPasswordEntry != null)
+            {
+                _storageService.Delete(currentPasswordEntry);
+                _accountRepository.Delete(currentPasswordEntry);
+            }
         }
     }
 }
