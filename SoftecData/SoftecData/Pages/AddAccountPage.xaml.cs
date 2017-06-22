@@ -1,6 +1,5 @@
 ﻿using SoftecData.Models;
 using SoftecData.Services;
-using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,39 +18,31 @@ using System.Windows.Shapes;
 namespace SoftecData.Pages
 {
     /// <summary>
-    /// Interaction logic for PasswordsPage.xaml
+    /// Interaction logic for AddAccountPage.xaml
     /// </summary>
-    public partial class PasswordsPage : Page
+    public partial class AddAccountPage : Page
     {
         private StorageService _storageService;
         private AccountRepository _accountRepository;
 
-        public PasswordsPage(StorageService storageService, AccountRepository accountRepository)
+        public AddAccountPage(StorageService storageService, AccountRepository accountRepository)
         {
             _storageService = storageService;
             _accountRepository = accountRepository;
-            this.DataContext = _accountRepository;
-            InitializeComponent();
-            //this.Resources["AccountRepository"] = new AccountRepository();
-        }
-        public PasswordsPage()
-        {
             InitializeComponent();
         }
 
-        private void addAccountBtn_Click(object sender, RoutedEventArgs e)
+        public AddAccountPage()
         {
-            NavigationService.Navigate(new AddAccountPage(_storageService, _accountRepository));
+            InitializeComponent();
         }
 
-        private void addPasswordBtn_Click(object sender, RoutedEventArgs e)
+        private void doneButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void deleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            Account account = new Account() { Username = usernameTextbox.Text };
+            _storageService.Add(account);
+            _accountRepository.Add(account);
+            NavigationService.Navigate(new PasswordsPage(_storageService, _accountRepository));
         }
     }
 }

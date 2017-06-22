@@ -8,18 +8,52 @@ using System.Threading.Tasks;
 
 namespace SoftecData.Services
 {
-    public class AccountRepository
+    public class AccountRepository : iCRUD
     {
         private ObservableCollection<Account> _accounts;
+        public ObservableCollection<Account> Accounts
+        {
+            get { return _accounts; }
+        }
 
         public AccountRepository()
         {
             _accounts = new ObservableCollection<Account>();
         }
         
-        public ObservableCollection<Account> Accounts
+        public void Initialize(StorageService storageService)
         {
-            get { return _accounts; }
+            _accounts = storageService.GetAccounts();
+        }
+
+        public void Add(Account account)
+        {
+            _accounts.Add(account);
+        }
+
+        public void Add(PasswordEntry password)
+        {
+
+        }
+
+        public void Delete(Account account)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(PasswordEntry password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ObservableCollection<Account> GetAccounts()
+        {
+            return _accounts;
+        }
+
+        public ObservableCollection<PasswordEntry> GetPasswords()
+        {
+            throw new NotImplementedException();
         }
 
         public void SeedDummyData()

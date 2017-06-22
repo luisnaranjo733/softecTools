@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SoftecData.Services
 {
-    public class StorageService
+    public class StorageService : iCRUD
     {
         public string StorageFilePath { get; set; } 
 
@@ -44,7 +44,7 @@ namespace SoftecData.Services
 
         }
 
-        public IEnumerable<Account> GetAccounts()
+        public ObservableCollection<Account> GetAccounts()
         {
             ObservableCollection<Account> accounts = new ObservableCollection<Account>();
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
@@ -58,7 +58,7 @@ namespace SoftecData.Services
             return accounts;
         }
 
-        public IEnumerable<PasswordEntry> GetPasswords()
+        public ObservableCollection<PasswordEntry> GetPasswords()
         {
             ObservableCollection<PasswordEntry> passwords = new ObservableCollection<PasswordEntry>();
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
