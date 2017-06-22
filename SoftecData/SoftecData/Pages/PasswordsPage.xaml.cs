@@ -24,11 +24,15 @@ namespace SoftecData.Pages
     public partial class PasswordsPage : Page
     {
         private StorageService _storageService;
+        private AccountRepository _accountRepository;
 
-        public PasswordsPage(StorageService storageService)
+        public PasswordsPage(StorageService storageService, AccountRepository accountRepository)
         {
             _storageService = storageService;
+            _accountRepository = accountRepository;
+            this.DataContext = _accountRepository;
             InitializeComponent();
+            //this.Resources["AccountRepository"] = new AccountRepository();
         }
         public PasswordsPage()
         {

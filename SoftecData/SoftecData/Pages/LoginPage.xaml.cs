@@ -22,9 +22,12 @@ namespace SoftecData.Pages
     public partial class LoginPage : Page
     {
         private StorageService _storageService;
-        public LoginPage(StorageService storageService)
+        private AccountRepository _accountRepository;
+
+        public LoginPage(StorageService storageService, AccountRepository accountRepository)
         {
             _storageService = storageService;
+            _accountRepository = accountRepository;
             InitializeComponent();
         }
 
@@ -35,7 +38,7 @@ namespace SoftecData.Pages
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PasswordsPage(_storageService));
+            NavigationService.Navigate(new PasswordsPage(_storageService, _accountRepository));
         }
     }
 }

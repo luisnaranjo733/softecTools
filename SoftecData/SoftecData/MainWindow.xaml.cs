@@ -23,15 +23,19 @@ namespace SoftecData
     public partial class MainWindow : Window
     {
         private StorageService storageService;
+        private AccountRepository accountRepository;
 
         public MainWindow()
         {
             InitializeComponent();
             storageService = new StorageService();
+            accountRepository = new AccountRepository();
             try
             {
                 storageService.Initialize();
-                _mainFrame.Navigate(new LoginPage(storageService));
+                accountRepository.SeedDummyData();
+                //accountRepository.Accounts = storageService.GetAccounts(
+                _mainFrame.Navigate(new LoginPage(storageService, accountRepository));
             } catch
             {
                 MessageBox.Show("Missing sqlite DLL");

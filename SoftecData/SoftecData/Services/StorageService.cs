@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace SoftecData.Services
 
         public IEnumerable<Account> GetAccounts()
         {
-            List<Account> accounts = new List<Account>();
+            ObservableCollection<Account> accounts = new ObservableCollection<Account>();
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
             {
                 var query = db.Table<Account>().OrderBy(a => a.Username);
@@ -59,7 +60,7 @@ namespace SoftecData.Services
 
         public IEnumerable<PasswordEntry> GetPasswords()
         {
-            List<PasswordEntry> passwords = new List<PasswordEntry>();
+            ObservableCollection<PasswordEntry> passwords = new ObservableCollection<PasswordEntry>();
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
             {
                 var query = db.Table<PasswordEntry>().OrderBy(p => p.Timestamp);
