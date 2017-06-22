@@ -33,7 +33,9 @@ namespace SoftecData.Services
 
         public void Add(PasswordEntry password)
         {
-
+            Account account = _accounts.Single(a => a.Id == password.AccountId);
+            account.Passwords.Add(password);
+            //_accounts.Add(account);
         }
 
         public void Delete(Account account)
@@ -51,7 +53,7 @@ namespace SoftecData.Services
             return _accounts;
         }
 
-        public ObservableCollection<PasswordEntry> GetPasswords()
+        public ObservableCollection<PasswordEntry> GetPasswords(Account account)
         {
             throw new NotImplementedException();
         }

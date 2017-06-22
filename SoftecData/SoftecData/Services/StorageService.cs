@@ -49,27 +49,26 @@ namespace SoftecData.Services
             ObservableCollection<Account> accounts = new ObservableCollection<Account>();
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
             {
-                var query = db.Table<Account>().OrderBy(a => a.Username);
-                foreach (Account account in query)
+                var accountQuery = db.Table<Account>().OrderBy(a => a.Username);
+                foreach (Account account in accountQuery)
                 {
+                    var passwordQuery = db.Table<PasswordEntry>().Where(p => p.AccountId == account.Id);
+                    ObservableCollection<PasswordEntry> passwords = new ObservableCollection<PasswordEntry>();
+                    foreach(PasswordEntry passwordEntry in passwordQuery)
+                    {
+                        passwords.Add(passwordEntry);
+                    }
+                    account.SetPasswords(passwords);
+                    
                     accounts.Add(account);
                 }
             }
             return accounts;
         }
 
-        public ObservableCollection<PasswordEntry> GetPasswords()
+        public ObservableCollection<PasswordEntry> GetPasswords(Account account)
         {
-            ObservableCollection<PasswordEntry> passwords = new ObservableCollection<PasswordEntry>();
-            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
-            {
-                var query = db.Table<PasswordEntry>().OrderBy(p => p.Timestamp);
-                foreach (PasswordEntry password in query)
-                {
-                    passwords.Add(password);
-                }
-            }
-            return passwords;
+            throw new NotImplementedException();
         }
 
 

@@ -12,10 +12,12 @@ namespace SoftecData.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public int AccountId { get; set; }
 
         private string _initials;
         private DateTime _timestamp;
         private string _password;
+        
 
         public string Initials
         {

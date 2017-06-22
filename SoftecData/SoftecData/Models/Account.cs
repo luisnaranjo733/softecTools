@@ -28,6 +28,11 @@ namespace SoftecData.Models
             }
         }
 
+        public void SetPasswords(ObservableCollection<PasswordEntry> passwords)
+        {
+            _passwords = passwords;
+        }
+
         public ObservableCollection<PasswordEntry> Passwords
         {
             get { return _passwords; }

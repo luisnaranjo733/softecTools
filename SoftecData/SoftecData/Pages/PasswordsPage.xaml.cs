@@ -46,7 +46,8 @@ namespace SoftecData.Pages
 
         private void addPasswordBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentAccount = (Account) listViewAccounts.SelectedItem;
+            NavigationService.Navigate(new AddPasswordPage(_storageService, _accountRepository, currentAccount));
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)

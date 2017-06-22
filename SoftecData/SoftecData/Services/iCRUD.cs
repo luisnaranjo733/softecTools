@@ -15,6 +15,6 @@ namespace SoftecData.Services
         void Delete(Account account);
         void Delete(PasswordEntry password);
         ObservableCollection<Account> GetAccounts();
-        ObservableCollection<PasswordEntry> GetPasswords();
+        ObservableCollection<PasswordEntry> GetPasswords(Account account);
     }
 }
