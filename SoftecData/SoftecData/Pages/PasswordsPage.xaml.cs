@@ -39,10 +39,19 @@ namespace SoftecData.Pages
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void addAccountBtn_Click(object sender, RoutedEventArgs e)
         {
-            var accounts =_storageService.GetPasswords();
-            //_storageService.Add(new PasswordEntry { Password = "1234" , Timestamp=DateTime.Now, Initials="LN"});
+
+        }
+
+        private void addPasswordBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
