@@ -49,10 +49,14 @@ namespace SoftecData.Services
             ObservableCollection<Account> accounts = new ObservableCollection<Account>();
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
             {
-                var accountQuery = db.Table<Account>().OrderBy(a => a.Username);
+                TableQuery<Account> accountQuery = db.Table<Account>()
+                    .OrderByDescending(a => a.Id);
+
                 foreach (Account account in accountQuery)
                 {
-                    var passwordQuery = db.Table<PasswordEntry>().Where(p => p.AccountId == account.Id);
+                    TableQuery<PasswordEntry> passwordQuery = db.Table<PasswordEntry>()
+                        .Where(p => p.AccountId == account.Id)
+                        .OrderByDescending(p => p.Timestamp);
                     ObservableCollection<PasswordEntry> passwords = new ObservableCollection<PasswordEntry>();
                     foreach(PasswordEntry passwordEntry in passwordQuery)
                     {
@@ -93,9 +97,18 @@ namespace SoftecData.Services
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
             {
                 db.Delete(account);
+
                 // TODO: Find and delete all password entries that depend on this account that is being deleted
                 // Currently these are just being left behind. The loading logic loops over accounts
                 // so they shouldn't get rendered after their parent account is deleted
+
+                TableQuery<PasswordEntry> passwordQuery = db.Table<PasswordEntry>()
+                    .Where(p => p.AccountId == account.Id);
+                foreach(PasswordEntry passwordEntry in passwordQuery)
+                {
+                    Delete(passwordEntry);
+                }
+
             }
         }
 
