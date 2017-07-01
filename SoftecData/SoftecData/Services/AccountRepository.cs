@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SoftecData.Services
 {
-    public class AccountRepository : iCRUD
+    public class AccountRepository
     {
         private ObservableCollection<Account> _accounts;
         public ObservableCollection<Account> Accounts
@@ -28,13 +28,13 @@ namespace SoftecData.Services
 
         public void Add(Account account)
         {
-            _accounts.Add(account);
+            _accounts.Insert(0, account);
         }
 
         public void Add(PasswordEntry password)
         {
             Account account = _accounts.Single(a => a.Id == password.AccountId);
-            account.Passwords.Add(password);
+            account.Passwords.Insert(0, password);
             //_accounts.Add(account);
         }
 

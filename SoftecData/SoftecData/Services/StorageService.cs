@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SoftecData.Services
 {
-    public class StorageService : iCRUD
+    public class StorageService
     {
         public string StorageFilePath { get; set; } 
 
@@ -69,12 +69,6 @@ namespace SoftecData.Services
             }
             return accounts;
         }
-
-        public ObservableCollection<PasswordEntry> GetPasswords(Account account)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public void Add(Account account)
         {

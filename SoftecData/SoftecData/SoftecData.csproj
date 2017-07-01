@@ -101,7 +101,6 @@
       <DependentUpon>PasswordsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\AccountRepository.cs" />
-    <Compile Include="Services\iCRUD.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
