@@ -54,7 +54,12 @@ namespace SoftecData.Pages
         {
             var currentAccount = (Account)listViewAccounts.SelectedItem;
             var currentPasswordEntry = (PasswordEntry)listViewPasswords.SelectedItem;
-            if (currentPasswordEntry != null)
+
+            if (currentPasswordEntry == null)
+            {
+                _storageService.Delete(currentAccount);
+                _accountRepository.Delete(currentAccount);
+            } else
             {
                 _storageService.Delete(currentPasswordEntry);
                 _accountRepository.Delete(currentPasswordEntry);

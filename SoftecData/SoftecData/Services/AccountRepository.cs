@@ -40,7 +40,8 @@ namespace SoftecData.Services
 
         public void Delete(Account account)
         {
-            throw new NotImplementedException();
+            _accounts.Remove(account);
+            //throw new NotImplementedException();
         }
 
         public void Delete(PasswordEntry password)
