@@ -49,6 +49,7 @@ namespace SoftecData.Pages
                 Timestamp = DateTime.Now,
                 AccountId = _currentAccount.Id
             };
+            passwordEntry.Password = passwordTextbox.Text;
             _storageService.Add(passwordEntry);
             _accountRepository.Add(passwordEntry);
             NavigationService.Navigate(new PasswordsPage(_storageService, _accountRepository));
