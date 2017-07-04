@@ -36,8 +36,8 @@ namespace SoftecData
                 accountRepository.Initialize(storageService);
                 //accountRepository.SeedDummyData();
 
-                //_mainFrame.Navigate(new PasswordsPage(storageService, accountRepository));
-                _mainFrame.Navigate(new LoginPage(storageService, accountRepository));
+                _mainFrame.Navigate(new PasswordsPage(storageService, accountRepository));
+                //_mainFrame.Navigate(new LoginPage(storageService, accountRepository));
             } catch
             {
                 MessageBox.Show("Missing sqlite DLL");

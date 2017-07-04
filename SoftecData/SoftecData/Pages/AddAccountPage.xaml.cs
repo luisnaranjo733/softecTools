@@ -44,5 +44,10 @@ namespace SoftecData.Pages
             _accountRepository.Add(account);
             NavigationService.Navigate(new PasswordsPage(_storageService, _accountRepository));
         }
+
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+            usernameTextbox.Focus();
+        }
     }
 }
