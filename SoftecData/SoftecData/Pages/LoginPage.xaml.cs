@@ -93,5 +93,10 @@ namespace SoftecData.Pages
             }
             
         }
+
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+            passwordBox.Focus();
+        }
     }
 }

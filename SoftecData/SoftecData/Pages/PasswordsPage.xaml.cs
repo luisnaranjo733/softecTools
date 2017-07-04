@@ -52,17 +52,23 @@ namespace SoftecData.Pages
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            var currentAccount = (Account)listViewAccounts.SelectedItem;
-            var currentPasswordEntry = (PasswordEntry)listViewPasswords.SelectedItem;
 
-            if (currentPasswordEntry == null)
+            var result = MessageBox.Show("Are you sure you want to delete this?", "Confirmation", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
             {
-                _storageService.Delete(currentAccount);
-                _accountRepository.Delete(currentAccount);
-            } else
-            {
-                _storageService.Delete(currentPasswordEntry);
-                _accountRepository.Delete(currentPasswordEntry);
+                var currentAccount = (Account)listViewAccounts.SelectedItem;
+                var currentPasswordEntry = (PasswordEntry)listViewPasswords.SelectedItem;
+
+                if (currentPasswordEntry == null)
+                {
+                    _storageService.Delete(currentAccount);
+                    _accountRepository.Delete(currentAccount);
+                }
+                else
+                {
+                    _storageService.Delete(currentPasswordEntry);
+                    _accountRepository.Delete(currentPasswordEntry);
+                }
             }
         }
     }

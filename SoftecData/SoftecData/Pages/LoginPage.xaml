@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SoftecData.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="LoginPage">
+      Title="LoginPage" Loaded="PageLoaded">
 
     <StackPanel>
         <Label Content="Softec Dashboard" Margin="0,0,0,30" />
@@ -15,6 +15,6 @@
         <PasswordBox Name="passwordBox"></PasswordBox>
         <!--<TextBox x:Name="keyBox" Margin="10,20,10,0" MinHeight="20" />-->
 
-        <Button x:Name="loginBtn" Margin="0,40,0,0" MinHeight="30" Content="Log in" Click="loginBtn_Click" />
+        <Button IsDefault="True" x:Name="loginBtn" Margin="0,40,0,0" MinHeight="30" Content="Log in" Click="loginBtn_Click" />
     </StackPanel>
 </Page>

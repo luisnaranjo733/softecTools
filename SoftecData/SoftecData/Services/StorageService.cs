@@ -92,10 +92,8 @@ namespace SoftecData.Services
             {
                 db.Delete(account);
 
-                // TODO: Find and delete all password entries that depend on this account that is being deleted
-                // Currently these are just being left behind. The loading logic loops over accounts
-                // so they shouldn't get rendered after their parent account is deleted
-
+                // Find and delete all password entries that depend on this account that is being deleted
+                // e.g.: Cascade delete
                 TableQuery<PasswordEntry> passwordQuery = db.Table<PasswordEntry>()
                     .Where(p => p.AccountId == account.Id);
                 foreach(PasswordEntry passwordEntry in passwordQuery)
