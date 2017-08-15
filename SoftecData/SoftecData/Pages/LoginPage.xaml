@@ -8,7 +8,7 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="LoginPage" Loaded="PageLoaded">
 
-    <StackPanel>
+    <StackPanel Margin="0,0,0,124">
         <Label Content="Softec Dashboard" Margin="0,0,0,30" />
 
         <Label Content="Enter password" />
