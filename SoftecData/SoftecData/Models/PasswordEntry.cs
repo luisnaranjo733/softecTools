@@ -42,7 +42,21 @@ namespace SoftecData.Models
 
         public string Password
         {
-            get { return _password; }
+            get {
+                if (this.ShowPassword)
+                {
+                    return _password;
+                } else
+                {
+                    string hiddenPassword = "";
+                    for(int i = 0; i < _password.Length; i++)
+                    {
+                        hiddenPassword += "*";
+                    }
+                    return hiddenPassword;
+                }
+                
+            }
             set
             {
                 _password = value;
