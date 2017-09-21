@@ -17,8 +17,12 @@ namespace SoftecData.Models
         private string _initials;
         private DateTime _timestamp;
         private string _password;
-        private bool _showPassword;
+        private Account _account;
         
+        public void setAccount(Account account)
+        {
+            this._account = account;
+        }
 
         public string Initials
         {
@@ -43,7 +47,7 @@ namespace SoftecData.Models
         public string Password
         {
             get {
-                if (this.ShowPassword)
+                if (this._account.ShowPassword)
                 {
                     return _password;
                 } else
@@ -61,16 +65,6 @@ namespace SoftecData.Models
             {
                 _password = value;
                 OnPropertyChanged("Password");
-            }
-        }
-
-        public bool ShowPassword
-        {
-            get { return _showPassword; }
-            set
-            {
-                _showPassword = value;
-                OnPropertyChanged("ShowPassword");
             }
         }
 

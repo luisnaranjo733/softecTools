@@ -79,7 +79,7 @@ namespace SoftecData.Pages
 
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
-            int x = 1;
+
         }
     }
 }

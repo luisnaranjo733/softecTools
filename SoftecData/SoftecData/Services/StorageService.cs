@@ -60,6 +60,7 @@ namespace SoftecData.Services
                     ObservableCollection<PasswordEntry> passwords = new ObservableCollection<PasswordEntry>();
                     foreach(PasswordEntry passwordEntry in passwordQuery)
                     {
+                        passwordEntry.setAccount(account);
                         passwords.Add(passwordEntry);
                     }
                     account.SetPasswords(passwords);

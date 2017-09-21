@@ -15,6 +15,18 @@ namespace SoftecData.Models
         public int Id { get; set; }
 
         private string _username;
+        private bool _showPassword;
+
+        public bool ShowPassword
+        {
+            get { return _showPassword; }
+            set
+            {
+                _showPassword = value;
+                OnPropertyChanged("ShowPassword");
+            }
+        }
+
         private ObservableCollection<PasswordEntry> _passwords
             = new ObservableCollection<PasswordEntry>();
 

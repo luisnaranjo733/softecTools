@@ -39,7 +39,12 @@ namespace SoftecData.Pages
 
         private void doneButton_Click(object sender, RoutedEventArgs e)
         {
-            Account account = new Account() { Username = usernameTextbox.Text };
+
+            Account account = new Account() {
+                Username = usernameTextbox.Text,
+                ShowPassword = showPasswordCheckbox.IsChecked.GetValueOrDefault(false)
+            };
+
             _storageService.Add(account);
             _accountRepository.Add(account);
             NavigationService.Navigate(new PasswordsPage(_storageService, _accountRepository));
@@ -48,6 +53,11 @@ namespace SoftecData.Pages
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
             usernameTextbox.Focus();
+        }
+
+        private void showPasswordCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

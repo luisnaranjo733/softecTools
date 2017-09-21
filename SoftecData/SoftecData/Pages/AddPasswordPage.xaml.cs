@@ -46,9 +46,9 @@ namespace SoftecData.Pages
                 Password = passwordTextbox.Text,
                 Initials = initialsTextbox.Text,
                 Timestamp = DateTime.Now,
-                AccountId = _currentAccount.Id,
-                ShowPassword = showPasswordCheckbox.IsChecked.GetValueOrDefault(false)
+                AccountId = _currentAccount.Id
             };
+            passwordEntry.setAccount(_currentAccount);
             _storageService.Add(passwordEntry);
             _accountRepository.Add(passwordEntry);
             NavigationService.Navigate(new PasswordsPage(_storageService, _accountRepository));
