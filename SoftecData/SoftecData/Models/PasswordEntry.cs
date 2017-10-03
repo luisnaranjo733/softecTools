@@ -47,25 +47,38 @@ namespace SoftecData.Models
         public string Password
         {
             get {
-                if (this._account.ShowPassword)
-                {
-                    return _password;
-                } else
-                {
-                    string hiddenPassword = "";
-                    for(int i = 0; i < _password.Length; i++)
-                    {
-                        hiddenPassword += "*";
-                    }
-                    return hiddenPassword;
-                }
-                
+                return _password;
             }
             set
             {
                 _password = value;
                 OnPropertyChanged("Password");
             }
+        }
+
+        public string DisplayPassword
+        {
+            get
+            {
+                if (_account.ShowPassword)
+                {
+                    return _password;
+                }
+                else
+                {
+                    return getProtectedPassword();
+                }
+            }
+        }
+
+        private string getProtectedPassword()
+        {
+            string hiddenPassword = "";
+            for (int i = 0; i < _password.Length; i++)
+            {
+                hiddenPassword += "*";
+            }
+            return hiddenPassword;
         }
 
         #region INotifyPropertyChanged Members

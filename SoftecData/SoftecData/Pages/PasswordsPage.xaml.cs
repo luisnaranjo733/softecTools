@@ -32,11 +32,22 @@ namespace SoftecData.Pages
             _accountRepository = accountRepository;
             this.DataContext = _accountRepository;
             InitializeComponent();
-            //this.Resources["AccountRepository"] = new AccountRepository();
+            AddHandler(Keyboard.KeyDownEvent, (KeyEventHandler)HandleKeyDownEvent);
         }
         public PasswordsPage()
         {
             InitializeComponent();
+        }
+
+        private void HandleKeyDownEvent(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.C && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                
+                var currentAccount = (Account) listViewAccounts.SelectedItem;
+                var currentPasswordEntry = (PasswordEntry) listViewPasswords.SelectedItem;
+                MessageBox.Show(currentPasswordEntry.Password);
+            }
         }
 
         private void addAccountBtn_Click(object sender, RoutedEventArgs e)
