@@ -43,10 +43,11 @@ namespace SoftecData.Pages
         {
             if (e.Key == Key.C && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
-                
-                var currentAccount = (Account) listViewAccounts.SelectedItem;
                 var currentPasswordEntry = (PasswordEntry) listViewPasswords.SelectedItem;
-                MessageBox.Show(currentPasswordEntry.Password);
+                if (currentPasswordEntry != null)
+                {
+                    MessageBox.Show(currentPasswordEntry.Password);
+                }
             }
         }
 
