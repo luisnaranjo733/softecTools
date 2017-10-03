@@ -46,7 +46,7 @@ namespace SoftecData.Pages
                 var currentPasswordEntry = (PasswordEntry) listViewPasswords.SelectedItem;
                 if (currentPasswordEntry != null)
                 {
-                    MessageBox.Show(currentPasswordEntry.Password);
+                    Clipboard.SetText(currentPasswordEntry.Password);
                 }
             }
         }
@@ -87,11 +87,6 @@ namespace SoftecData.Pages
                     }
                 }
             }
-        }
-
-        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
