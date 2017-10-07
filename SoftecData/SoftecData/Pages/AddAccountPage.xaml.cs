@@ -39,6 +39,12 @@ namespace SoftecData.Pages
 
         private void doneButton_Click(object sender, RoutedEventArgs e)
         {
+            if (usernameTextbox.Text == "")
+            {
+                MessageBox.Show("Username cannot be empty", "Oops", MessageBoxButton.OK);
+                return;
+            }
+
 
             Account account = new Account() {
                 Username = usernameTextbox.Text,

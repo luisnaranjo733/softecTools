@@ -39,7 +39,7 @@ namespace SoftecData.Pages
             InitializeComponent();
         }
 
-        private void doneButton_Click(object sender, RoutedEventArgs e)
+        private void addPasswordEntry()
         {
             PasswordEntry passwordEntry = new PasswordEntry()
             {
@@ -52,7 +52,33 @@ namespace SoftecData.Pages
             _storageService.Add(passwordEntry);
             _accountRepository.Add(passwordEntry);
             NavigationService.Navigate(new PasswordsPage(_storageService, _accountRepository));
+        }
 
+        private void doneButton_Click(object sender, RoutedEventArgs e)
+        {
+            String password = passwordTextbox.Text;
+            String initials = initialsTextbox.Text;
+            Boolean passwordEmpty = password == "";
+            Boolean initialsEmpty = initials == "";
+
+            if (_currentAccount == null)
+            {
+                MessageBox.Show("Make sure to select an account before adding a password", "Oops", MessageBoxButton.OK);
+                return;
+            } else if (passwordEmpty && initialsEmpty)
+            {
+                MessageBox.Show("Password and initials field can't be empty", "Oops", MessageBoxButton.OK);
+                return;
+            } else if (passwordEmpty)
+            {
+                MessageBox.Show("Password field can't be empty", "Oops", MessageBoxButton.OK);
+                return;
+            } else if (initialsEmpty)
+            {
+                MessageBox.Show("Initials field can't be empty", "Oops", MessageBoxButton.OK);
+                return;
+            }
+            addPasswordEntry();
         }
 
         private void PageLoaded(object sender, RoutedEventArgs e)

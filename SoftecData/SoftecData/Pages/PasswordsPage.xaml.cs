@@ -59,6 +59,13 @@ namespace SoftecData.Pages
         private void addPasswordBtn_Click(object sender, RoutedEventArgs e)
         {
             var currentAccount = (Account) listViewAccounts.SelectedItem;
+
+            if (currentAccount == null)
+            {
+                MessageBox.Show("Make sure to select an account before adding a password", "Oops", MessageBoxButton.OK);
+                return;
+            }
+
             NavigationService.Navigate(new AddPasswordPage(_storageService, _accountRepository, currentAccount));
         }
 
