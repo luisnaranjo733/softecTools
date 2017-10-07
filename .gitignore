@@ -1,6 +1,7 @@
 SoftecWeb/src/venv
 SoftecWeb/src/SoftecWeb/media
 SoftecWeb/src/db.sqlite3
+SoftecData/builds/
 *.sqlite3
 
 *.pem
