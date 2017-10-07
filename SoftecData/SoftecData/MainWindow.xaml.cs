@@ -3,6 +3,7 @@ using SoftecData.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -45,6 +46,12 @@ namespace SoftecData
             
         }
 
+        private void MenuItem_Version_Click(object sender, RoutedEventArgs e)
+        {
+
+            String buildVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            MessageBox.Show("The current build version is " + buildVersion, "Build Version", MessageBoxButton.OK);
+        }
     }
 
 }

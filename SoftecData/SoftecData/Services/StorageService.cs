@@ -71,6 +71,14 @@ namespace SoftecData.Services
             return accounts;
         }
 
+        public void Update(Account account)
+        {
+            using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))
+            {
+                db.Update(account);
+            }
+        }
+
         public void Add(Account account)
         {
             using (SQLiteConnection db = new SQLiteConnection(StorageFilePath))

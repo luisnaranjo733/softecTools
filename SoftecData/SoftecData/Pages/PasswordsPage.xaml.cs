@@ -48,6 +48,16 @@ namespace SoftecData.Pages
                 {
                     Clipboard.SetText(currentPasswordEntry.Password);
                 }
+            } else if (e.Key == Key.S && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                Account currentAccount = (Account) listViewAccounts.SelectedItem;
+
+                currentAccount.ShowPassword = !currentAccount.ShowPassword;
+                foreach(PasswordEntry passwordEntry in currentAccount.Passwords) {
+                    passwordEntry.OnPropertyChanged("DisplayPassword");
+                }
+
+                this._storageService.Update(currentAccount);
             }
         }
 

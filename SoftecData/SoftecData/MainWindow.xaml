@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Width="700">
     <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Version" Click="MenuItem_Version_Click"></MenuItem>
+        </Menu>
         <Frame x:Name="_mainFrame"/>
     </DockPanel>
 </Window>
