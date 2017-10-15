@@ -9,12 +9,12 @@
       Title="LoginPage" Loaded="PageLoaded">
 
     <StackPanel Margin="0,0,0,124">
-        <Label Content="Softec Dashboard" Margin="0,0,0,30" />
+        <Label Content="Softec control de usuarios" Margin="0,0,0,30" FontSize="30" />
 
-        <Label Content="Enter password" />
-        <PasswordBox Name="passwordBox"></PasswordBox>
+        <Label Content="Password" FontSize="16" />
+        <PasswordBox Name="passwordBox" Height="30" FontSize="18"></PasswordBox>
         <!--<TextBox x:Name="keyBox" Margin="10,20,10,0" MinHeight="20" />-->
 
-        <Button IsDefault="True" x:Name="loginBtn" Margin="0,40,0,0" MinHeight="30" Content="Log in" Click="loginBtn_Click" />
+        <Button IsDefault="True" x:Name="loginBtn" Margin="0,40,0,0" MinHeight="30" Content="Log in" Click="loginBtn_Click" FontSize="25"/>
     </StackPanel>
 </Page>

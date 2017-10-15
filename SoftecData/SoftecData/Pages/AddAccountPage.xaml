@@ -10,9 +10,9 @@
 
     <StackPanel>
 
-        <Label Content="Account username:"></Label>
-        <TextBox x:Name="usernameTextbox"></TextBox>
-        <Button IsDefault="True" x:Name="doneButton" Click="doneButton_Click" MinHeight="50" MinWidth="150" Content="Save" Margin="0,50,0,0" ></Button>
+        <Label Content="Account username:" FontSize="20" FontWeight="Bold"></Label>
+        <TextBox x:Name="usernameTextbox" FontSize="20"></TextBox>
+        <Button IsDefault="True" x:Name="doneButton" Click="doneButton_Click" MinHeight="50" MinWidth="150" Content="Save" Margin="0,50,0,0" FontSize="20" ></Button>
         
     </StackPanel>
 </Page>
