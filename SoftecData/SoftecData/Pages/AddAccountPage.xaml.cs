@@ -48,7 +48,7 @@ namespace SoftecData.Pages
 
             Account account = new Account() {
                 Username = usernameTextbox.Text,
-                ShowPassword = showPasswordCheckbox.IsChecked.GetValueOrDefault(false)
+                ShowPassword = false
             };
 
             _storageService.Add(account);
