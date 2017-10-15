@@ -46,10 +46,7 @@ namespace SoftecData.Pages
             }
 
 
-            Account account = new Account() {
-                Username = usernameTextbox.Text,
-                ShowPassword = false
-            };
+            Account account = Account.with(usernameTextbox.Text);
 
             _storageService.Add(account);
             _accountRepository.Add(account);

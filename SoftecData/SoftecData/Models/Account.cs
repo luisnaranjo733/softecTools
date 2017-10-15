@@ -17,6 +17,7 @@ namespace SoftecData.Models
         private string _username;
         private bool _showPassword;
 
+        [Ignore]
         public bool ShowPassword
         {
             get { return _showPassword; }
@@ -43,6 +44,15 @@ namespace SoftecData.Models
         public void SetPasswords(ObservableCollection<PasswordEntry> passwords)
         {
             _passwords = passwords;
+        }
+
+        public static Account with(String username)
+        {
+            return new Account()
+            {
+                Username = username,
+                ShowPassword = false
+            };
         }
 
         public ObservableCollection<PasswordEntry> Passwords
